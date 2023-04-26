@@ -36,7 +36,7 @@ from rclpy.node import Node
 from geometry_msgs.msg import Twist
 ```
 
-A classe 'TurtleController' é a principal desse código e dentro dela há 2 funções. A primeira é a <code>init</code> que seta algumas configurações iniciais para a simulação, como definir o envio de informações Twist via o publisher. Também está setado um timer que irá invocar o <code>move_turtle</code> a cada 0.1s. 
+A classe 'TurtleController' é a principal desse código e dentro dela há 2 funções. A primeira é a <code>init</code> que seta algumas configurações iniciais para a simulação, como definir o envio de informações Twist via o publisher. O publisher é um nó especifico do ROS que nos permite a comunicação através de nós que publicam uma mensagem, o "publisher" e nós que acessam essas informações, os "subscriber", há um código de exemplo do próprio ROS que ja demonstra esse funcionamento, o "talker". Esse sistema é semelhante ao mqtt que usa os mesmos principicio de publisher e subscriber para envio de mensagem. Também está setado um timer que irá invocar o <code>move_turtle</code> a cada 0.1s. 
 
 <img src="classeTController.png" alt=""/>
 
