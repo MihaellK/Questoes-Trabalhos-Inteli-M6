@@ -20,7 +20,7 @@ class MissionControl(deque):
             csv_reader = csv.reader(csv_file_var, delimiter=',')
             for row in csv_reader:
                 new_pose = Pose()
-                new_pose.x, new_pose.y = [float(x) for x in row]
+                new_pose.x, new_pose.theta = [float(x) for x in row]
                 self.enqueue(new_pose)
 
     def enqueue(self, x):
@@ -85,6 +85,7 @@ class TurtleController(Node):
         # var armazena a diff da pos atual e da setada
         x_diff = self.setpoint.x - self.pose.x
         y_diff = self.setpoint.y - self.pose.y
+        z_diff = self.setpoint.theta - self.pose.theta
         if self.pose == self.setpoint:
             msg.linear.x, msg.linear.y = 0.0, 0.0
             self.update_setpoint()
@@ -92,10 +93,10 @@ class TurtleController(Node):
             msg.linear.x = 0.5 if x_diff > 0 else -0.5
         else:
             msg.linear.x = 0.0
-        if abs(y_diff) > MAX_DIFF:
-            msg.linear.y = 0.5 if y_diff > 0 else -0.5
+        if abs(z_diff) > MAX_DIFF:
+            msg.angular.z = 0.5 if y_diff > 0 else -0.5
         else:
-            msg.linear.y = 0.0
+            msg.angular.z = 0.0
 
         self.publisher.publish(msg)
 
@@ -111,12 +112,13 @@ class TurtleController(Node):
     def pose_callback(self, msg: Odometry):
         x = msg.pose.pose.position.x
         y = msg.pose.pose.position.y
+        z = msg.pose.pose.position.z
         _, _, theta = euler_from_quaternion([msg.pose.pose.orientation.x, msg.pose.pose.orientation.y, msg.pose.pose.orientation.z, msg.pose.pose.orientation.w])
 
         self.pose = Pose(x=x,  y=y, theta=theta)
         if self.setpoint.x == -40.0:
             self.update_setpoint()
-        # self.get_logger().info(f'A tartaruga está em x={msg.x}, y={msg.y}, theta={msg.theta}')
+        self.get_logger().info(f'A tartaruga está em x={x}, y={y}, theta={z}')
 
 
 def main(args=None):
