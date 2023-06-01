@@ -4,11 +4,8 @@
 
 O projeto a seguir usa a biblioteca YoLov8 e o dataset [_Plants Diseases Detection Model_](https://universe.roboflow.com/final-year-project-zorqg/plants-diseases-detection-model/dataset/8), disponibilizado em [_Roboflow_](roboflow.com), para a avaliação de plantas doentes
 
-<<<<<<< Updated upstream
-=======
-Assista o video nos arquivos acima para visualizr o colab final!
+Assista o video na pasta _media_ acima para visualizar o colab final!
 
->>>>>>> Stashed changes
 ## Colab
 Iniciamos esse colab conferindo se estamos com a GPU habilitada, isso diminui significativamente o tempo de treinamento do modelo, caso esteja desabilitado, devemos ativar em _editar > configuraões de notebook > acelerador de hardware > GPU_.
 Em seguida, instalamos as bibliotecas necessárias
