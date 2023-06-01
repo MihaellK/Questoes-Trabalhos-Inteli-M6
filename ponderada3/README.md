@@ -9,7 +9,7 @@ Assista o video na pasta _media_ acima para visualizar o colab final!
 ## Colab
 Iniciamos esse colab conferindo se estamos com a GPU habilitada, isso diminui significativamente o tempo de treinamento do modelo, caso esteja desabilitado, devemos ativar em _editar > configuraões de notebook > acelerador de hardware > GPU_.
 Em seguida, instalamos as bibliotecas necessárias
-![Instalação das libs](/media/vid-lib.png)
+![Instalação das libs](./media/vid-lib.png)
 
 Na sequencia, importamos as libs para o colab e definimos a varivel **HOME** como o diretório onde o python está sendo executado.
 ![Importação das libs e definição de HOME](/media/import-home.png)
