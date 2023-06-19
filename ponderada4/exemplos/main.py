@@ -33,7 +33,6 @@ list_files = os.listdir("recebidos")
 
 @app.post("/images")
 def images():
-    # Rota da imagem local para ser feito o upload (no meu caso esta na pasta mock e é a imagem "lala.png")
     for arquivo in list_files:
         with open(os.path.join("recebidos", arquivo), 'rb+') as f:
             dados = f.read()

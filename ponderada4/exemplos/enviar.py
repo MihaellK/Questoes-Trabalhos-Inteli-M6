@@ -96,8 +96,7 @@ from cv_bridge import CvBridge # Package to convert between ROS and OpenCV Image
 import cv2 # OpenCV library
 import httpx
 import requests
-# from ultralytics import YOLO
-# model = YOLO("best.pt")
+
 class ImageSubscriber(Node):
   """
   Create an ImageSubscriber class, which is a subclass of the Node class.
@@ -126,15 +125,13 @@ class ImageSubscriber(Node):
     self.get_logger().info('Receiving video frame')
     # Convert ROS Image message to OpenCV image
     current_frame = self.br.imgmsg_to_cv2(data)
-    # results = model(current_frame)
-    # annotated_frame = results[0].plot()
-    # Convert the frame to a byte array
+
     _, img_encoded = cv2.imencode('.png', current_frame)
     frame_data = img_encoded.tobytes()
     import requests
     url = "http://127.0.0.1:8000/upload"
     files=[
-      ('content',('lala.png',frame_data,'image/png'))
+      ('content',('teste.png',frame_data,'image/png'))
     ]
     response = requests.request("POST", url, files=files)
     # Check the response status code
