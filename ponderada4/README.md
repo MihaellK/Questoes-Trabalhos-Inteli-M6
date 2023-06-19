@@ -37,4 +37,3 @@ Para conferir se nossos arquivos foram realmente enviados, podemos acessar a rot
 
 ![rota Upload](./midia/rotaImages.png)
 
-
